@@ -8,10 +8,8 @@
 
 <title>Mapa de calor</title>
 
-<link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet/dist/leaflet.css"
-/>
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
@@ -20,65 +18,56 @@
 <style>
 
 html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
 }
 
 #map {
-    width: 100%;
-    height: 100vh;
+    width:100%;
+    height:100vh;
 }
 
 .info {
 
-    position: absolute;
-    top: 10px;
-    left: 10px;
+    position:absolute;
+    top:10px;
+    left:10px;
 
-    z-index: 9999;
+    z-index:9999;
 
-    background: rgba(255,255,255,0.96);
+    background:rgba(255,255,255,0.96);
 
-    padding: 18px;
+    padding:18px;
 
-    border-radius: 12px;
+    border-radius:12px;
 
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    box-shadow:0 0 15px rgba(0,0,0,0.5);
 
-    font-family: Arial;
+    font-family:Arial;
 
-    max-width: 360px;
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-}
-
-.item {
-    margin-bottom: 14px;
-}
-
-.texto-zona {
-
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-
+    max-width:340px;
 }
 
 .total {
 
-    margin-top: 20px;
+    margin-top:18px;
 
-    padding-top: 12px;
+    padding-top:12px;
 
-    border-top: 2px solid #ccc;
+    border-top:2px solid #ccc;
 
-    font-size: 18px;
+    font-size:18px;
 
-    font-weight: bold;
+    font-weight:bold;
+}
+
+.texto-zona {
+
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
 }
 
 </style>
@@ -91,10 +80,10 @@ html, body {
 
 <div class="info">
 
-<h2>Ubicaciones fijas</h2>
+<h2>Ubicaciones</h2>
 
 
-<div class="item">
+<div style="margin-bottom:14px;">
 
 <b style="color:#ff0000">
 Desaladora de Guía de Isora
@@ -102,18 +91,18 @@ Desaladora de Guía de Isora
 
 <br>
 
-Horas anuales:
-<b>2197.01</b>
+Horas:
+<b>2196.51</b>
 
 <br>
 
-Radio operativo:
-<b>769 m</b>
+Radio:
+<b>700 m</b>
 
 </div>
 
 
-<div class="item">
+<div style="margin-bottom:14px;">
 
 <b style="color:#004cff">
 Depósito La Calabacera
@@ -121,18 +110,18 @@ Depósito La Calabacera
 
 <br>
 
-Horas anuales:
-<b>11.05</b>
+Horas:
+<b>11.07</b>
 
 <br>
 
-Radio operativo:
-<b>550 m</b>
+Radio:
+<b>380 m</b>
 
 </div>
 
 
-<div class="item">
+<div style="margin-bottom:14px;">
 
 <b style="color:#00aa00">
 Balsa Lomo del Balo
@@ -140,18 +129,18 @@ Balsa Lomo del Balo
 
 <br>
 
-Horas anuales:
+Horas:
 <b>0.00</b>
 
 <br>
 
-Radio operativo:
-<b>1100 m</b>
+Radio:
+<b>900 m</b>
 
 </div>
 
 
-<div class="item">
+<div style="margin-bottom:14px;">
 
 <b style="color:#8a2be2">
 Depósito San Juan
@@ -159,18 +148,18 @@ Depósito San Juan
 
 <br>
 
-Horas anuales:
+Horas:
 <b>6.47</b>
 
 <br>
 
-Radio operativo:
-<b>700 m</b>
+Radio:
+<b>550 m</b>
 
 </div>
 
 
-<div class="item">
+<div style="margin-bottom:14px;">
 
 <b style="color:#ff8800">
 Depósito Alcalá II
@@ -178,18 +167,18 @@ Depósito Alcalá II
 
 <br>
 
-Horas anuales:
+Horas:
 <b>4.39</b>
 
 <br>
 
-Radio operativo:
-<b>550 m</b>
+Radio:
+<b>380 m</b>
 
 </div>
 
 
-<div class="item">
+<div style="margin-bottom:14px;">
 
 <b style="color:#00bcd4">
 Oficina Técnica Entemanser Adeje
@@ -197,21 +186,21 @@ Oficina Técnica Entemanser Adeje
 
 <br>
 
-Horas anuales:
-<b>39.70</b>
+Horas:
+<b>39.69</b>
 
 <br>
 
-Radio operativo:
-<b>4869 m</b>
+Radio:
+<b>4800 m</b>
 
 </div>
 
 
 <div class="total">
 
-TOTAL GLOBAL:
-2258.62 horas
+TOTAL GLOBAL:<br>
+2258.14 horas
 
 </div>
 
@@ -225,68 +214,38 @@ const map = L.map('map').setView(
 );
 
 L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-        attribution: '&copy; OpenStreetMap'
-    }
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+    attribution:'&copy; OpenStreetMap'
+}
 ).addTo(map);
 
-const ubicaciones = [{"nombre": "Desaladora de Gu\u00eda de Isora", "lat": 28.189528, "lon": -16.822778, "radio": 769, "color": "#ff0000", "horas": 2197.01}, {"nombre": "Dep\u00f3sito La Calabacera", "lat": 28.196722, "lon": -16.80425, "radio": 550, "color": "#004cff", "horas": 11.05}, {"nombre": "Balsa Lomo del Balo", "lat": 28.205694, "lon": -16.791639, "radio": 1100, "color": "#00aa00", "horas": 0.0}, {"nombre": "Dep\u00f3sito San Juan", "lat": 28.186348, "lon": -16.80575, "radio": 700, "color": "#8a2be2", "horas": 6.47}, {"nombre": "Dep\u00f3sito Alcal\u00e1 II", "lat": 28.201861, "lon": -16.812361, "radio": 550, "color": "#ff8800", "horas": 4.39}, {"nombre": "Oficina T\u00e9cnica Entemanser Adeje", "lat": 28.12227, "lon": -16.72575, "radio": 4869, "color": "#00bcd4", "horas": 39.7}];
+const ubicaciones = [{"nombre": "Desaladora de Gu\u00eda de Isora", "lat": 28.189528, "lon": -16.822778, "radio": 700, "color": "#ff0000", "horas": 2196.51}, {"nombre": "Dep\u00f3sito La Calabacera", "lat": 28.196722, "lon": -16.80425, "radio": 380, "color": "#004cff", "horas": 11.07}, {"nombre": "Balsa Lomo del Balo", "lat": 28.205694, "lon": -16.791639, "radio": 900, "color": "#00aa00", "horas": 0.0}, {"nombre": "Dep\u00f3sito San Juan", "lat": 28.186348, "lon": -16.80575, "radio": 550, "color": "#8a2be2", "horas": 6.47}, {"nombre": "Dep\u00f3sito Alcal\u00e1 II", "lat": 28.201861, "lon": -16.812361, "radio": 380, "color": "#ff8800", "horas": 4.39}, {"nombre": "Oficina T\u00e9cnica Entemanser Adeje", "lat": 28.12227, "lon": -16.72575, "radio": 4800, "color": "#00bcd4", "horas": 39.69}];
 
 ubicaciones.forEach(u => {
-
-    // --------------------------------------------------------
-    // CIRCULO
-    // --------------------------------------------------------
 
     L.circle(
         [u.lat, u.lon],
         {
 
-            radius: u.radio,
+            radius:u.radio,
 
-            color: u.color,
+            color:u.color,
 
-            fillColor: u.color,
+            fillColor:u.color,
 
-            fillOpacity: 0.15,
+            fillOpacity:0.15,
 
-            weight: 4
-
+            weight:3
         }
 
     ).addTo(map);
 
-    // --------------------------------------------------------
-    // MARCADOR INVISIBLE
-    // --------------------------------------------------------
-
-    L.marker(
-        [u.lat, u.lon],
-        {
-            opacity: 0
-        }
-    )
-
-    .addTo(map)
-
-    .bindPopup(
-
-        `<b>${u.nombre}</b><br>
-        Horas anuales: ${u.horas}<br>
-        Radio: ${u.radio} m`
-
-    );
-
-    // --------------------------------------------------------
-    // TEXTO FIJO
-    // --------------------------------------------------------
-
     L.tooltip(
         {
-            permanent: true,
-            direction: 'center',
-            className: 'texto-zona'
+            permanent:true,
+            direction:'center',
+            className:'texto-zona'
         }
     )
 
@@ -301,7 +260,8 @@ ubicaciones.forEach(u => {
                 1px -1px 2px white,
                 -1px 1px 2px white;
         ">
-            ${u.nombre}
+            ${u.nombre}<br>
+            ${u.horas} h
         </div>`
     )
 
@@ -321,11 +281,9 @@ L.heatLayer(
 
     {
 
-        radius: 25,
-
-        blur: 18,
-
-        maxZoom: 17
+        radius:25,
+        blur:18,
+        maxZoom:17
 
     }
 
